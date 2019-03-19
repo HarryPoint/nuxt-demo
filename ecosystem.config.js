@@ -33,14 +33,15 @@ module.exports = {
       user: 'root',
       host: '148.70.244.109',
       'post-deploy':
-        'yarn install && pm2 reload ecosystem.config.js --env production'
+        'yarn install && yarn build && pm2 reload ecosystem.config.js --env production'
     },
     test: {
       ...deploy,
       ref: 'origin/develop',
       user: 'root',
       host: '119.27.167.20',
-      'post-deploy': 'yarn install && pm2 reload ecosystem.config.js --env test'
+      'post-deploy':
+        'yarn install && yarn build-test && pm2 reload ecosystem.config.js --env test'
     }
   }
 }
