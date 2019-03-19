@@ -1,5 +1,5 @@
 let HOST = '0.0.0.0'
-let PORT = 3333
+let PORT = 5050
 let deploy = {
   repo: 'git@github.com:HarryPoint/nuxt-demo.git',
   path: '/var/www/node-server/nuxt-demo'
