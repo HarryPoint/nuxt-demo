@@ -1,8 +1,17 @@
 const pkg = require('./package')
+const resolve = require('path').resolve
 
+const apiUrl =
+  process.env.TEST === 'true'
+    ? 'http://test.api.yay.com.cn'
+    : 'https://api.yay.com.cn'
 module.exports = {
   mode: 'universal',
-
+  // 环境变量(可能有些环境变量还没用起来)
+  env: {
+    isTest: process.env.TEST === 'true',
+    apiUrl
+  },
   /*
   ** Headers of the page
   */
@@ -29,22 +38,35 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/element-ui'],
+  plugins: ['@/plugins/element-ui', '@/plugins/axios'],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
+    // https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt
+    'cookie-universal-nuxt',
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+    // ['nuxt-sass-resources-loader', ['@/assets/utils.scss']]
   ],
   /*
   ** Axios module configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    proxy: true,
+    credentials: true
   },
-
+  proxy: {
+    '**/*.json': {
+      target: apiUrl,
+      pathRewrite: {
+        // '^/api': '/'
+      }
+    }
+  },
   /*
   ** Build configuration
   */
@@ -64,4 +86,5 @@ module.exports = {
       }
     }
   }
+  // sassResources: ['@/assets/utils.scss']
 }
