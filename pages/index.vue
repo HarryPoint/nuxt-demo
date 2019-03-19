@@ -39,7 +39,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  // width: $content-width;
+  width: $content-width;
 }
 
 .title {

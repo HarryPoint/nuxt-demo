@@ -1,5 +1,4 @@
 const pkg = require('./package')
-const resolve = require('path').resolve
 
 const apiUrl =
   process.env.TEST === 'true'
@@ -48,9 +47,15 @@ module.exports = {
     'cookie-universal-nuxt',
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
-    // ['nuxt-sass-resources-loader', ['@/assets/utils.scss']]
+    '@nuxtjs/proxy',
+    '@nuxtjs/style-resources'
   ],
+  styleResources: {
+    // your settings here
+    sass: ['@/assets/utils.scss'], // alternative: scss
+    less: [],
+    stylus: []
+  },
   /*
   ** Axios module configuration
   */
