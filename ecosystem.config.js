@@ -29,6 +29,17 @@ module.exports = {
         PORT,
         TEST: true
       }
+    },
+    {
+      name: 'nuxt-demo-backup',
+      instances: 1,
+      script: 'server/index.js',
+      // 正式服
+      env_backup: {
+        NODE_ENV: 'production',
+        HOST,
+        PORT: PORT + 1
+      }
     }
   ],
 
