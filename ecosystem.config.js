@@ -49,8 +49,7 @@ module.exports = {
       ref: 'origin/master',
       user: 'root',
       host: '148.70.244.109',
-      'post-deploy':
-        'yarn install && yarn build && pm2 reload ecosystem.config.js --env production'
+      'post-deploy': 'yarn install && yarn build && pm2 reload nuxt-demo'
     },
     backup: {
       ...deploy,
@@ -58,8 +57,7 @@ module.exports = {
       ref: 'origin/master',
       user: 'root',
       host: '148.70.244.109',
-      'post-deploy':
-        'yarn install && yarn build && pm2 reload ecosystem.config.js --env backup'
+      'post-deploy': 'yarn install && yarn build && pm2 reload nuxt-demo-backup'
     },
     test: {
       ...deploy,
