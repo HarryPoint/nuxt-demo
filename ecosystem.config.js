@@ -8,7 +8,7 @@ module.exports = {
   apps: [
     {
       name: 'nuxt-demo',
-      instances: 1,
+      instances: 2,
       script: 'server/index.js',
       // 正式服
       env_production: {
@@ -16,29 +16,12 @@ module.exports = {
         HOST,
         PORT
       },
-      // 正式服
-      env_backup: {
-        NODE_ENV: 'production',
-        HOST,
-        PORT: PORT + 1
-      },
       // 测试服
       env_test: {
         NODE_ENV: 'production',
         HOST,
         PORT,
         TEST: true
-      }
-    },
-    {
-      name: 'nuxt-demo-backup',
-      instances: 1,
-      script: 'server/index.js',
-      // 正式服
-      env_backup: {
-        NODE_ENV: 'production',
-        HOST,
-        PORT: PORT + 1
       }
     }
   ],
@@ -49,15 +32,8 @@ module.exports = {
       ref: 'origin/master',
       user: 'root',
       host: '148.70.244.109',
-      'post-deploy': 'yarn install && yarn build && pm2 reload nuxt-demo'
-    },
-    backup: {
-      ...deploy,
-      path: deploy.path + '-backup',
-      ref: 'origin/master',
-      user: 'root',
-      host: '148.70.244.109',
-      'post-deploy': 'yarn install && yarn build && pm2 reload nuxt-demo-backup'
+      'post-deploy':
+        'mv .nuxt/dist/client static/_nuxt && yarn install && yarn build && pm2 reload ecosystem.config.js --env production'
     },
     test: {
       ...deploy,
