@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    舒服舒服2
+    舒服舒服3
   </section>
 </template>
 
