@@ -16,6 +16,12 @@ module.exports = {
         HOST,
         PORT
       },
+      // 正式服
+      env_backup: {
+        NODE_ENV: 'production',
+        HOST,
+        PORT: PORT + 1
+      },
       // 测试服
       env_test: {
         NODE_ENV: 'production',
@@ -34,6 +40,15 @@ module.exports = {
       host: '148.70.244.109',
       'post-deploy':
         'yarn install && yarn build && pm2 reload ecosystem.config.js --env production'
+    },
+    backup: {
+      ...deploy,
+      path: deploy.path + '-backup',
+      ref: 'origin/master',
+      user: 'root',
+      host: '148.70.244.109',
+      'post-deploy':
+        'yarn install && yarn build && pm2 reload ecosystem.config.js --env backup'
     },
     test: {
       ...deploy,
