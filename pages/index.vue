@@ -11,6 +11,10 @@
     post-setup	Post-setup commands or path to a script on the host machine	String	 
     pre-deploy-local	pre-deploy action	String	 
     post-deploy	post-deploy action
+    <img 
+      src="./images/a.png" 
+      alt="">
+    <div class="test"/>
   </section>
 </template>
 
@@ -32,6 +36,10 @@ export default {
   align-items: center;
   text-align: center;
   width: $content-width;
+  .test {
+    height: 100px;
+    background: url('./images/a.png');
+  }
 }
 
 .title {
