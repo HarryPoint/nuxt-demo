@@ -32,9 +32,6 @@ module.exports = {
       ref: 'origin/master',
       user: 'root',
       host: '148.70.244.109',
-      'pre-setup': 'pwd',
-      'post-setup': 'ls',
-      'pre-deploy-local': 'pwd',
       'post-deploy':
         'rm -rf static/_nuxt && mv .nuxt/dist/client static/_nuxt && yarn install && yarn build && pm2 reload ecosystem.config.js --env production'
     },
