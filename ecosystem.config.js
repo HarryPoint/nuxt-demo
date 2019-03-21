@@ -41,8 +41,9 @@ module.exports = {
       ref: 'origin/develop',
       user: 'root',
       host: '119.27.167.20',
+      'post-setup': 'mkdir -p .nuxt/dist/client',
       'post-deploy':
-        'yarn install && yarn build-test && pm2 reload ecosystem.config.js --env test'
+        'rm -rf static/_nuxt && mv .nuxt/dist/client static/_nuxt && yarn install && yarn build-test && pm2 reload ecosystem.config.js --env test'
     }
   }
 }
