@@ -33,7 +33,7 @@ module.exports = {
       user: 'root',
       host: '148.70.244.109',
       'post-deploy':
-        'rm -rf static/_nuxt && mv .nuxt/dist/client static/_nuxt && yarn install && yarn build && pm2 reload ecosystem.config.js --env production'
+        'node backup.js && yarn install && yarn build && pm2 reload ecosystem.config.js --env production'
     },
     test: {
       ...deploy,
