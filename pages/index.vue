@@ -1,6 +1,16 @@
 <template>
   <section class="container">
-    更新了
+    key	SSH key path	String	$HOME/.ssh
+    user	SSH user	String	 
+    host	SSH host	[String]	 
+    ssh_options	SSH options with no command-line flag, see ‘man ssh’	String or [String]	 
+    ref	GIT remote/branch	String	 
+    repo	GIT remote	String	 
+    path	path in the server	String	 
+    pre-setup	Pre-setup command or path to a script on your local machine	String	 
+    post-setup	Post-setup commands or path to a script on the host machine	String	 
+    pre-deploy-local	pre-deploy action	String	 
+    post-deploy	post-deploy action
   </section>
 </template>
 
