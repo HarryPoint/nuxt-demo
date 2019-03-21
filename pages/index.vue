@@ -37,6 +37,7 @@ export default {
   text-align: center;
   width: $content-width;
   .test {
+    width: 100px;
     height: 100px;
     background: url('./images/a.png');
   }
