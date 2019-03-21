@@ -1,7 +1,6 @@
 <template>
   <section class="container">
-    sdfsdfsf
-
+    更新了
   </section>
 </template>
 
