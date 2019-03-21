@@ -32,9 +32,9 @@ module.exports = {
       ref: 'origin/master',
       user: 'root',
       host: '148.70.244.109',
-      'pre-setup': 'pwd',
-      'post-setup': 'pwd',
-      'pre-deploy-local': 'node ./pre-deploy-local.js',
+      'pre-setup': 'uname -a',
+      'post-setup': 'uname -a',
+      'pre-deploy-local': 'uname -a',
       'post-deploy':
         'node backup.js && yarn install && yarn build && pm2 reload ecosystem.config.js --env production'
     },
