@@ -1,0 +1,154 @@
+body {
+  // 抵消amfe-flexible对body的font-size的影响(后来直接把amfe-flexible@2.2.1的源码改了,不在计算body的fontSize了)
+  // font-size: 15px!important;
+  // line-height: 1.5;
+  // 改变cube一些组件的样式
+  .cube-picker-confirm,
+  .cube-action-sheet-item_active,
+  .cube-dialog-btn_highlight {
+    color: #222;
+  }
+  .cube-dialog-confirm,
+  .cube-dialog-title,
+  .cube-dialog-btn {
+    line-height: 1.2;
+  }
+}
+
+html,body,#__nuxt,#__layout {
+  height: 100%;
+  overflow: hidden;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.page {
+  position: relative;
+  height: 100%;
+}
+
+// 页面的过渡效果
+.page-enter-active, .page-leave-active {
+  transition: opacity .2s;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+}
+
+// cube上拉加载提示信息
+.cube-pullup-wrapper,
+.cube-pulldown-wrapper {
+  font-size: 12px;
+}
+
+input,button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+
+// animate.css
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+.animated.delay-1s {
+  animation-delay: 1s;
+}
+
+.animated.delay-2s {
+  animation-delay: 2s;
+}
+
+.animated.delay-3s {
+  animation-delay: 3s;
+}
+
+.animated.delay-4s {
+  animation-delay: 4s;
+}
+
+.animated.delay-5s {
+  animation-delay: 5s;
+}
+
+.animated.fast {
+  animation-duration: 800ms;
+}
+
+.animated.faster {
+  animation-duration: 400ms;
+}
+
+.animated.fastest {
+  animation-duration: 200ms;
+}
+
+.animated.slow {
+  animation-duration: 2s;
+}
+
+.animated.slower {
+  animation-duration: 3s;
+}
+
+@media (prefers-reduced-motion) {
+  .animated {
+    animation: unset !important;
+    transition: none !important;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp {
+  animation-name: slideInUp;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  animation-name: zoomIn;
+}

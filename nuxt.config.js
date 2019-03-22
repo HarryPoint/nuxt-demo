@@ -1,15 +1,16 @@
 const pkg = require('./package')
-const TransformModulesPlugin = require('webpack-transform-modules-plugin')
 const apiUrl =
   process.env.TEST === 'true'
-    ? 'http://test.api.yay.com.cn'
-    : 'https://api.yay.com.cn'
+    ? 'https://test.m.yay.com.cn'
+    : 'https://m.yay.com.cn'
 module.exports = {
   mode: 'universal',
   // 环境变量(可能有些环境变量还没用起来)
   env: {
-    isTest: process.env.TEST === 'true',
-    apiUrl
+    // 是否使用正式服的API,若为apiFormal就是要使用正式服的api
+    API_FORMAL: process.env.TEST !== 'true',
+    // 区分目标环境,比如yueDong,v6
+    PRODUCT_TARGET: process.env.PRODUCT_TARGET
   },
   /*
   ** Headers of the page
@@ -21,7 +22,22 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        // 改动：引入amfe-flexible，用于计算rem,库有改动,去掉了body上的fontSize
+        src: '/js/amfe-flexible@2.2.1.custom.min.js'
+      },
+      {
+        src: '/js/im/spark-md5.js'
+      },
+      {
+        src: '/js/im/webim.js'
+      },
+      {
+        src: '/js/base.js'
+      }
+    ]
   },
 
   /*
@@ -32,12 +48,30 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['element-ui/lib/theme-chalk/index.css'],
+  css: [],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/element-ui', '@/plugins/axios', '@/plugins/cube'],
+  plugins: [
+    // 改动：引入插件
+    { src: '~/plugins/vconsole', ssr: false },
+    { src: '~/plugins/routerError', ssr: false },
+    '~/plugins/utils',
+    '~/plugins/dayjs',
+    '~/plugins/cube',
+    { src: '~/plugins/vueComponentsNoSSR', ssr: false },
+    '~/plugins/vueDirective',
+    '~/plugins/vueFilters',
+    '~/plugins/api',
+    '~/plugins/codeMessage',
+    '~/plugins/axios',
+    '~/plugins/fetchCatch',
+    '~/plugins/imCatch',
+    '~/plugins/ga/baiduGa',
+    { src: '~/plugins/routerAfterEach', ssr: false },
+    { src: '~/plugins/onNuxtReady', ssr: false }
+  ],
 
   /*
   ** Nuxt.js modules
@@ -65,11 +99,8 @@ module.exports = {
     credentials: true
   },
   proxy: {
-    '**/*.json': {
-      target: apiUrl,
-      pathRewrite: {
-        // '^/api': '/'
-      }
+    '/api/': {
+      target: apiUrl
     }
   },
   /*
@@ -90,7 +121,6 @@ module.exports = {
         })
       }
       config.resolve.alias['cube-ui'] = 'cube-ui/lib'
-    },
-    plugins: [new TransformModulesPlugin()]
+    }
   }
 }
