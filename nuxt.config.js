@@ -22,22 +22,7 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    script: [
-      {
-        // 改动：引入amfe-flexible，用于计算rem,库有改动,去掉了body上的fontSize
-        src: '/js/amfe-flexible@2.2.1.custom.min.js'
-      },
-      {
-        src: '/js/im/spark-md5.js'
-      },
-      {
-        src: '/js/im/webim.js'
-      },
-      {
-        src: '/js/base.js'
-      }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   /*
@@ -55,22 +40,7 @@ module.exports = {
   */
   plugins: [
     // 改动：引入插件
-    { src: '~/plugins/vconsole', ssr: false },
-    { src: '~/plugins/routerError', ssr: false },
-    '~/plugins/utils',
-    '~/plugins/dayjs',
-    '~/plugins/cube',
-    { src: '~/plugins/vueComponentsNoSSR', ssr: false },
-    '~/plugins/vueDirective',
-    '~/plugins/vueFilters',
-    '~/plugins/api',
-    '~/plugins/codeMessage',
-    '~/plugins/axios',
-    '~/plugins/fetchCatch',
-    '~/plugins/imCatch',
-    '~/plugins/ga/baiduGa',
-    { src: '~/plugins/routerAfterEach', ssr: false },
-    { src: '~/plugins/onNuxtReady', ssr: false }
+    '~/plugins/cube'
   ],
 
   /*

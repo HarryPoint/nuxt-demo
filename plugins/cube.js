@@ -3,10 +3,6 @@
  */
 import Vue from 'vue'
 import Cube from 'cube-ui'
-import '@/components/createApi/createLoginDialog'
-import '@/components/createApi/createPaymentDialog'
-import '@/components/createApi/createBindPhoneDialog'
-import '@/components/createApi/createPaySuccessDialog'
 
 export default ({}, inject) => {
   // 按需引入需要手动处理.按需引入体积反而过大!!!
