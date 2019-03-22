@@ -1,5 +1,5 @@
 const pkg = require('./package')
-
+const TransformModulesPlugin = require('webpack-transform-modules-plugin')
 const apiUrl =
   process.env.TEST === 'true'
     ? 'http://test.api.yay.com.cn'
@@ -90,7 +90,7 @@ module.exports = {
         })
       }
       config.resolve.alias['cube-ui'] = 'cube-ui/lib'
-    }
+    },
+    plugins: [new TransformModulesPlugin()]
   }
-  // sassResources: ['@/assets/utils.scss']
 }
