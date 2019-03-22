@@ -37,7 +37,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/element-ui', '@/plugins/axios'],
+  plugins: ['@/plugins/element-ui', '@/plugins/axios', '@/plugins/cube'],
 
   /*
   ** Nuxt.js modules
@@ -89,6 +89,7 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+      config.resolve.alias['cube-ui'] = 'cube-ui/lib'
     }
   }
   // sassResources: ['@/assets/utils.scss']
