@@ -6,9 +6,9 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
-    "dev:test": "cross-env NODE_ENV=development TEST=true nodemon server/index.js --watch server",
+    "dev-test": "cross-env NODE_ENV=development TEST=true nodemon server/index.js --watch server",
     "build": "nuxt build",
-    "build:test": "cross-env TEST=true nuxt build",
+    "build-test": "cross-env TEST=true nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
     "start-test": "cross-env NODE_ENV=production TEST=true node server/index.js",
     "generate": "nuxt generate",
