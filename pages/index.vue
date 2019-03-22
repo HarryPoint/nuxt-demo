@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ImageIcon from '@/components/imageIcon'
+import ImageIcon from '@/components/ImageIcon'
 
 export default {
   components: {
